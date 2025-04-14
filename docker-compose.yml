@@ -1,0 +1,67 @@
+services:
+  asset-service:
+    build:
+      context: ./asset-service
+    container_name: asset-service
+    depends_on:
+    - discovery-server
+    environment:
+    - SPRING_PROFILES_ACTIVE=default
+    - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka
+    ports:
+    - 8081:8081
+  discovery-server:
+    build:
+      context: ./discovery-server
+    container_name: discovery-server
+    depends_on: []
+    environment:
+    - SPRING_PROFILES_ACTIVE=default
+    - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka
+    ports:
+    - 8761:8761
+  evaluation-service:
+    build:
+      context: ./evaluation-service
+    container_name: evaluation-service
+    depends_on:
+    - discovery-server
+    environment:
+    - SPRING_PROFILES_ACTIVE=default
+    - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka
+    ports:
+    - 8082:8082
+  gateway-service:
+    build:
+      context: ./gateway-service
+    container_name: gateway-service
+    depends_on:
+    - discovery-server
+    environment:
+    - SPRING_PROFILES_ACTIVE=default
+    - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka
+    ports:
+    - 8080:8080
+  price-service:
+    build:
+      context: ./price-service
+    container_name: price-service
+    depends_on:
+    - discovery-server
+    environment:
+    - SPRING_PROFILES_ACTIVE=default
+    - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka
+    ports:
+    - 8083:8083
+  wallet-service:
+    build:
+      context: ./wallet-service
+    container_name: wallet-service
+    depends_on:
+    - discovery-server
+    environment:
+    - SPRING_PROFILES_ACTIVE=default
+    - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka
+    ports:
+    - 8084:8084
+version: '3.8'

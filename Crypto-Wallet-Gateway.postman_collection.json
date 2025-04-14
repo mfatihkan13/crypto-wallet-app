@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "887f5002-9007-4174-9a11-ae3a58a2c9b6",
+		"name": "Crypto Wallet Gateway",
+		"description": "Postman collection for wallet, asset, price, and evaluation services.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8472562"
+	},
+	"item": [
+		{
+			"name": "Create Wallet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"satoshi@btc.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/wallet/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wallet",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add BTC Asset to Wallet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"symbol\": \"btc\",\n    \"quantity\": 0.5,\n    \"price\": 0.0\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/asset/add/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"asset",
+						"add",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add ETH Asset to Wallet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"symbol\": \"eth\",\n    \"quantity\": 4.25,\n    \"price\": 0.0\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/asset/add/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"asset",
+						"add",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Wallet Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/wallet/satoshi@btc.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wallet",
+						"satoshi@btc.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evaluate Wallet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"assets\": [\n        {\n            \"symbol\": \"btc\",\n            \"quantity\": 0.5,\n            \"value\": 35000\n        },\n        {\n            \"symbol\": \"eth\",\n            \"quantity\": 4.25,\n            \"value\": 15310.71\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"evaluate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

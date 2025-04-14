@@ -1,0 +1,21 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: price-service
+price:
+  update-interval: 300000
+coincap:
+  api:
+    key: "49b2c3b0b1f93dd04df1fe7f0e7b25139bc6b54090496ec0faace03469e3db95"
+    base:
+      url: "https://rest.coincap.io/v3"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
