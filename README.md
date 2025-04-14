@@ -50,3 +50,5 @@ This will start the following services using **Docker Compose**:
 | Asset Service       | 8081  |
 | Price Service       | 8083  |
 | Evaluation Service  | 8082  |
+
+Lastly import the postman collections to you postman
